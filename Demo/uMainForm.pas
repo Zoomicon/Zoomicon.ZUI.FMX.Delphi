@@ -5,8 +5,6 @@ interface
 uses
   Zoomicon.ZUI.Models, //for IZoomable
   Zoomicon.Introspection.FMX.StructureView, //for TStructureView
-  FrameStand, //for TFrameInfo;
-  SubjectStand,
   FMX.Controls,
   FMX.Forms,
   FMX.Layouts,
@@ -43,7 +41,6 @@ type
     btnDownScaledChild: TButton;
     btnTopLeftChild: TButton;
     btnMenu: TSpeedButton;
-    MultiViewFrameStand: TFrameStand;
     MainLayout: TLayout;
     MultiView: TMultiView;
     ContentLayout: TLayout;
@@ -56,7 +53,7 @@ type
     procedure MultiViewStartShowing(Sender: TObject);
 
   protected
-    FStructureViewFrameInfo: TFrameInfo<TStructureView>;
+    FStructureView: TStructureView;
     FStoredWheelDelta: extended;
     FOnZoomChanged: TZoomChangedEvent;
     procedure UpdateZoomFromTrackbars;
@@ -317,21 +314,17 @@ end;
 
 procedure TMainForm.MultiViewStartShowing(Sender: TObject);
 begin
-  with MultiViewFrameStand do
+  if not Assigned(FStructureView) then
   begin
-    CloseAllExcept(TStructureView);
-    if not Assigned(FStructureViewFrameInfo) then
+    FStructureView := TStructureView.Create(Self);
+    with FStructureView do
     begin
-      FStructureViewFrameInfo := MultiViewFrameStand.GetFrameInfo<TStructureView>;
-      with FStructureViewFrameInfo.Frame do
-      begin
-        GUIRoot := ScaledLayout;
-        ShowOnlyClasses := TClassList.Create([TScaledLayout, TButton]); //TStructureView's destructor will FreeAndNil that TClassList instance
-        OnSelection := StructureViewSelection;
-      end;
+      GUIRoot := ScaledLayout;
+      ShowOnlyClasses := TClassList.Create([TScaledLayout, TButton]); //TStructureView's destructor will FreeAndNil that TClassList instance
+      OnSelection := StructureViewSelection;
     end;
-    FStructureViewFrameInfo.Show;
   end;
+  FStructureView.Visible := true;
 end;
 
 end.

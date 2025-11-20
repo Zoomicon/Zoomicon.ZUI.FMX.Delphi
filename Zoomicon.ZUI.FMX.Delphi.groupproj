@@ -3,7 +3,7 @@
         <ProjectGuid>{63561014-6F4B-4204-8965-D0FB8DBFBC0E}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="Demo\\ZUI_Demo.dproj">
+        <Projects Include="Demo\ZUI_Demo.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Source\Zoomicon.ZUI.FMX.dproj">
@@ -18,13 +18,13 @@
         </BorlandProject>
     </ProjectExtensions>
     <Target Name="ZUI_Demo">
-        <MSBuild Projects="Demo\\ZUI_Demo.dproj"/>
+        <MSBuild Projects="Demo\ZUI_Demo.dproj"/>
     </Target>
     <Target Name="ZUI_Demo:Clean">
-        <MSBuild Projects="Demo\\ZUI_Demo.dproj" Targets="Clean"/>
+        <MSBuild Projects="Demo\ZUI_Demo.dproj" Targets="Clean"/>
     </Target>
     <Target Name="ZUI_Demo:Make">
-        <MSBuild Projects="Demo\\ZUI_Demo.dproj" Targets="Make"/>
+        <MSBuild Projects="Demo\ZUI_Demo.dproj" Targets="Make"/>
     </Target>
     <Target Name="Zoomicon_ZUI_FMX">
         <MSBuild Projects="Source\Zoomicon.ZUI.FMX.dproj"/>
@@ -45,4 +45,74 @@
         <CallTarget Targets="ZUI_Demo:Make;Zoomicon_ZUI_FMX:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+    <ItemGroup Condition="'$(BuildGroup)'=='Android'">
+        <BuildGroupProject Include="Demo\ZUI_Demo.dproj">
+            <ProjectGuid>{D0316A41-3AE7-444E-92C4-826C4D4D091D}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Android;Android64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="Source\Zoomicon.ZUI.FMX.dproj">
+            <ProjectGuid>{E21B9910-DD63-4407-8956-7913CC34AAE8}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Android;Android64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+    </ItemGroup>
+    <ItemGroup Condition="'$(BuildGroup)'=='macOS'">
+        <BuildGroupProject Include="Demo\ZUI_Demo.dproj">
+            <ProjectGuid>{D0316A41-3AE7-444E-92C4-826C4D4D091D}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>OSX64;OSXARM64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="Source\Zoomicon.ZUI.FMX.dproj">
+            <ProjectGuid>{E21B9910-DD63-4407-8956-7913CC34AAE8}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>OSX64;OSXARM64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+    </ItemGroup>
+    <ItemGroup Condition="'$(BuildGroup)'=='All Platforms'">
+        <BuildGroupProject Include="Demo\ZUI_Demo.dproj">
+            <ProjectGuid>{D0316A41-3AE7-444E-92C4-826C4D4D091D}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Android;Android64;iOSDevice64;iOSSimARM64;OSX64;OSXARM64;Win32;Win64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="Source\Zoomicon.ZUI.FMX.dproj">
+            <ProjectGuid>{E21B9910-DD63-4407-8956-7913CC34AAE8}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Android;Android64;iOSDevice64;iOSSimARM64;OSX64;OSXARM64;Win32;Win64;Win64x</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+    </ItemGroup>
+    <ItemGroup Condition="'$(BuildGroup)'=='iOS'">
+        <BuildGroupProject Include="Demo\ZUI_Demo.dproj">
+            <ProjectGuid>{D0316A41-3AE7-444E-92C4-826C4D4D091D}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>iOSDevice64;iOSSimARM64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="Source\Zoomicon.ZUI.FMX.dproj">
+            <ProjectGuid>{E21B9910-DD63-4407-8956-7913CC34AAE8}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>iOSDevice64;iOSSimARM64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+    </ItemGroup>
+    <ItemGroup Condition="'$(BuildGroup)'=='Windows'">
+        <BuildGroupProject Include="Demo\ZUI_Demo.dproj">
+            <ProjectGuid>{D0316A41-3AE7-444E-92C4-826C4D4D091D}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Win32;Win64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="Source\Zoomicon.ZUI.FMX.dproj">
+            <ProjectGuid>{E21B9910-DD63-4407-8956-7913CC34AAE8}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Win32;Win64;Win64x</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+    </ItemGroup>
 </Project>

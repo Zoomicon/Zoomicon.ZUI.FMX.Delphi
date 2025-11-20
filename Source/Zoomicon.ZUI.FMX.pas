@@ -56,7 +56,7 @@ implementation
     Zoomicon.Helpers.FMX.Layouts.ScaledLayoutHelpers, //for TScaledLayout.ScalingFactor
     Math; //for Sign
 
-{TZoomedLayout}
+{$REGION 'TZoomedLayout'}
 
 constructor TZoomedLayout.Create(AOwner: TComponent);
 
@@ -283,7 +283,9 @@ begin
     end;
 end;
 
-////////////////////////////////////////////////////////////////////////////////
+{$ENDREGION}
+
+{$region 'Registration'}
 
 procedure RegisterSerializationClasses;
 begin
@@ -296,6 +298,8 @@ begin
   RegisterSerializationClasses;
   RegisterComponents('Zoomicon', [TZoomedLayout]);
 end;
+
+{$endregion}
 
 initialization
   RegisterSerializationClasses; //don't call Register here, it's called by the IDE automatically on a package installation (fails at runtime)

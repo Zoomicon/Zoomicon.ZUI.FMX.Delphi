@@ -69,7 +69,9 @@ implementation
 
 {$R *.fmx}
 
-{TZoomFrame}
+{$REGION 'TZoomFrame'}
+
+{$region 'Initialization'}
 
 constructor TZoomFrame.Create(AOwner: TComponent);
 begin
@@ -82,15 +84,6 @@ begin
   ZoomControls.Stored := false; //not storing, will load from FMX and the apply wrapper properties //no need to set this for its children controls too
 
   ZoomControlsVisible := DEFAULT_ZOOM_CONTROLS_VISIBLE;
-end;
-
-procedure TZoomFrame.GetChildren(Proc: TGetChildProc; Root: TComponent);
-begin
-  inherited;
-  if (ScaledLayout.ChildrenCount <> 0) then //Children can be nil, so check ChildrenCount first
-    for var Control in ScaledLayout.Children do
-      if not ((csDesigning in ComponentState) and (Control.ClassName = 'TGrabHandle.TGrabHandleRectangle')) then //this is to not store Delphi IDE designer's selection grab handles
-        Proc(Control); //Store all children of ScaledLayout as if they were ours
 end;
 
 //TODO: seems to have issue in design mode, not loading all children back into the ScaledLayout (they seem to move into ZoomLayout)
@@ -113,6 +106,17 @@ begin
   EndUpdate;
 
   inherited;
+end;
+
+{$endregion}
+
+procedure TZoomFrame.GetChildren(Proc: TGetChildProc; Root: TComponent);
+begin
+  inherited;
+  if (ScaledLayout.ChildrenCount <> 0) then //Children can be nil, so check ChildrenCount first
+    for var Control in ScaledLayout.Children do
+      if not ((csDesigning in ComponentState) and (Control.ClassName = 'TGrabHandle.TGrabHandleRectangle')) then //this is to not store Delphi IDE designer's selection grab handles
+        Proc(Control); //Store all children of ScaledLayout as if they were ours
 end;
 
 {$region 'IZoomable'}
@@ -318,6 +322,10 @@ end;
 
 {$endregion}
 
+{$ENDREGION}
+
+{$region 'Registration'}
+
 procedure RegisterSerializationClasses;
 begin
   RegisterFmxClasses([TZoomFrame]);
@@ -329,6 +337,8 @@ begin
   RegisterSerializationClasses;
   RegisterComponents('Zoomicon', [TZoomFrame]);
 end;
+
+{$endregion}
 
 initialization
   RegisterSerializationClasses; //don't call Register here, it's called by the IDE automatically on a package installation (fails at runtime)

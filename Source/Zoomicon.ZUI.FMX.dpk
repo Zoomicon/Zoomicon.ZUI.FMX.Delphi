@@ -30,7 +30,7 @@ package Zoomicon.ZUI.FMX;
 requires
   rtl,
   fmx,
-  Zoomicon.Helpers.FMX;
+  Zoomicon.Helpers.FMX{BOSS};
 
 contains
   Zoomicon.ZUI.Models in 'Zoomicon.ZUI.Models.pas',

@@ -87,7 +87,7 @@ object ZoomFrame: TZoomFrame
       Size.Height = 19.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
-      Value = 1.000000000000000000
+      Value = 1.000000047497451000
       OnTracking = trackZoomXTracking
     end
     object trackZoomY: TTrackBar
@@ -103,7 +103,7 @@ object ZoomFrame: TZoomFrame
       Size.Height = 19.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 2
-      Value = 1.000000000000000000
+      Value = 1.000000047497451000
       OnTracking = trackZoomYTracking
     end
     object switchSyncAxes: TSwitch

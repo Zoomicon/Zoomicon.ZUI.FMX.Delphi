@@ -1,23 +1,16 @@
 {
-    "name": "ZUI_Demo",
-    "version": "1.0",
-
-    "description": "Zoomicon ZUI FMX Demo app",
-
-    "homepage": "https://github.com/Zoomicon/Zoomicon.ZUI.FMX.Delphi/Demo",
-
-    "main": "ZUI_Demo.dproj",
-    "mainsrc": ".",
-
-    "projects": [
-        "ZUI_Demo.dproj"
-    ],
-
-    "dependencies": {
-        "github.com/zoomicon/zoomicon.helpers.rtl.delphi": ">=3.0.0",
-        "github.com/zoomicon/zoomicon.helpers.fmx.delphi": ">=3.0.0",
-        "github.com/zoomicon/zoomicon.introspection.fmx.delphi": ">=3.0.0",
-        "github.com/zoomicon/zoomicon.zui.fmx.delphi": ">=3.0.0"
-    }
-
+	"name": "ZUI_Demo",
+	"description": "Zoomicon ZUI FMX Demo app",
+	"version": "3.1",
+	"homepage": "https://github.com/Zoomicon/Zoomicon.ZUI.FMX.Delphi/Demo",
+	"mainsrc": ".",
+	"projects": [
+		"ZUI_Demo.dproj"
+	],
+	"dependencies": {
+		"github.com/zoomicon/zoomicon.helpers.fmx.delphi": ">=3.0.0",
+		"github.com/zoomicon/zoomicon.helpers.rtl.delphi": ">=3.0.0",
+		"github.com/zoomicon/zoomicon.introspection.fmx.delphi": ">=3.0.0",
+		"github.com/zoomicon/zoomicon.zui.fmx.delphi": ">=3.1.0"
+	}
 }
