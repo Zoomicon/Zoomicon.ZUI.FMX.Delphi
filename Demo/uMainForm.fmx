@@ -293,15 +293,4 @@ object MainForm: TMainForm
     Text = 'btnMenu'
     TextSettings.Trimming = None
   end
-  object MultiViewFrameStand: TFrameStand
-    AnimationShow = 'OnShow*'
-    AnimationHide = 'OnHide*'
-    CommonActionPrefix = 'ca_'
-    DefaultHideAndCloseDeferTimeMS = 100
-    DefaultStyleName = 'framestand'
-    DefaultStandName = 'framestand'
-    DefaultParent = MultiView
-    Left = 464
-    Top = 16
-  end
 end

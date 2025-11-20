@@ -1,13 +1,13 @@
 {
 	"name": "Zoomicon.ZUI.FMX",
 	"description": "Zoomable User Interface (ZUI) controls for Delphi FMX",
-	"version": "3.1",
+	"version": "3.2",
 	"homepage": "",
 	"mainsrc": "",
 	"projects": [
 		"Zoomicon.ZUI.FMX.dproj"
 	],
 	"dependencies": {
-		"github.com/zoomicon/zoomicon.helpers.fmx.delphi": ">=3.0.0"
+		"github.com/zoomicon/zoomicon.helpers.fmx.delphi": ">=3.3.0"
 	}
 }

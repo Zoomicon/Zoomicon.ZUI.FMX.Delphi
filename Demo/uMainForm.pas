@@ -316,7 +316,7 @@ procedure TMainForm.MultiViewStartShowing(Sender: TObject);
 begin
   if not Assigned(FStructureView) then
   begin
-    FStructureView := TStructureView.Create(Self);
+    FStructureView := TStructureView.Create(MultiView);
     with FStructureView do
     begin
       GUIRoot := ScaledLayout;
@@ -324,7 +324,6 @@ begin
       OnSelection := StructureViewSelection;
     end;
   end;
-  FStructureView.Visible := true;
 end;
 
 end.
