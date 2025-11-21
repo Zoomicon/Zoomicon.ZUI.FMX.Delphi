@@ -322,6 +322,9 @@ begin
       GUIRoot := ScaledLayout;
       ShowOnlyClasses := TClassList.Create([TScaledLayout, TButton]); //TStructureView's destructor will FreeAndNil that TClassList instance
       OnSelection := StructureViewSelection;
+
+      Parent := MultiView;
+      Align := TAlignLayout.Client;
     end;
   end;
 end;
